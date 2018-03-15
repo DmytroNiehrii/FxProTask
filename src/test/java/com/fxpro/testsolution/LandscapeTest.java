@@ -21,21 +21,3 @@ public class LandscapeTest {
         assertEquals(testData[1].getExpectedVolume(), Landscape.getWaterVolume(testData[1].getModel()));
     }
 }
-
-class TestData {
-    private int[] model;
-    private int expectedVolume;
-
-    public TestData(int[] model, int expectedVolume) {
-        this.model = model;
-        this.expectedVolume = expectedVolume;
-    }
-
-    public int[] getModel() {
-        return model;
-    }
-
-    public int getExpectedVolume() {
-        return expectedVolume;
-    }
-}
