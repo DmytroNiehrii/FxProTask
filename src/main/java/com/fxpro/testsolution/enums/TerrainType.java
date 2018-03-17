@@ -1,5 +1,5 @@
 package com.fxpro.testsolution.enums;
 
-public enum Terrain {
+public enum TerrainType {
     Mountain, Water, Air
 }

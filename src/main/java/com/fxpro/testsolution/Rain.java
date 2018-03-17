@@ -1,7 +1,5 @@
 package com.fxpro.testsolution;
 
-import com.fxpro.testsolution.enums.Terrain;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,12 +7,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 
 @Component
@@ -23,13 +18,14 @@ import java.util.function.Supplier;
 @Getter
 @Setter
 public class Rain implements Supplier<Integer> {
-    private Terrain[][] terrain;
+    private Landscape landscape;
     private Set<WaterSource> waterSources = new HashSet<>();
     private Set<CompletableFuture<Integer>> waterSourceVolumes = new HashSet<>();
 
     public WaterSource createWaterSource(int terrainPosition) {
         WaterSource waterSource = new WaterSource();
         waterSource.setRain(this);
+
         waterSource.setTerrainPosition(terrainPosition);
         waterSources.add(waterSource);
 
@@ -37,8 +33,7 @@ public class Rain implements Supplier<Integer> {
     }
 
     public void start() {
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        waterSources.forEach(waterSource -> waterSourceVolumes.add(CompletableFuture.supplyAsync(waterSource, executorService)));
+        waterSources.forEach(waterSource -> waterSourceVolumes.add(CompletableFuture.supplyAsync(waterSource)));
     }
 
 
