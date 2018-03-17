@@ -83,16 +83,10 @@ public class ApplicationTests {
         landscape.generateLandscapeModel(model);
 
         assertTrue(Arrays.deepEquals(expectedLandscapeModelAfterGenerating, landscape.getTerrain()));
-        int waterVolume = landscape.startRain();
-        System.out.println("Finish terrain");
+        assertEquals(8, landscape.startRain());
+
+        assertTrue(Arrays.deepEquals(EXPECTED_LANDSCAPE_MODEL_AFTER_RAIN, landscape.getTerrain()));
         landscape.printTerrain();
-        assertEquals(5, waterVolume);
-        //assertEquals(0, landscapeModel.getWaterVolume());
-
-        //landscapeModel.startRain();
-        //assertTrue(Arrays.deepEquals(EXPECTED_LANDSCAPE_MODEL_AFTER_RAIN, landscapeModel.getTerrain()));
-
-        //assertEquals(8, landscapeModel.getWaterVolume());
     }
 
     @Test
@@ -100,12 +94,10 @@ public class ApplicationTests {
         landscape.generateLandscapeModel(model2);
 
         assertTrue(Arrays.deepEquals(expectedLandscapeModelAfterGenerating2, landscape.getTerrain()));
-        //assertEquals(0, landscapeModel.getWaterVolume());
+        assertEquals(8, landscape.startRain());
 
-        //landscapeModel.startRain();
-        //assertTrue(Arrays.deepEquals(EXPECTED_LANDSCAPE_MODEL_AFTER_RAIN_2, landscapeModel.getTerrain()));
-
-        //assertEquals(9, landscapeModel.getWaterVolume());
+        assertTrue(Arrays.deepEquals(EXPECTED_LANDSCAPE_MODEL_AFTER_RAIN_2, landscape.getTerrain()));
+        landscape.printTerrain();
     }
 
 }

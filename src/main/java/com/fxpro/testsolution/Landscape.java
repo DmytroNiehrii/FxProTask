@@ -43,10 +43,9 @@ public class Landscape {
 
     public int startRain() {
         // Specify where will be rain
-        /*for (int i = 0; i < getLandscapeWidth(); i++) {
+        for (int i = 0; i < getLandscapeWidth(); i++) {
             rain.createWaterSource(i);
-        }*/
-        rain.createWaterSource(1);
+        }
         rain.start();
         return rain.get();
     }
@@ -74,17 +73,20 @@ public class Landscape {
         this.terrain[i2][j2] = t;
     }
 
-    public void printTerrain() {
-        System.out.println("================= Terrain ================");
+    public synchronized void print(String s) {
+        System.out.print(s);
+    }
+
+    public synchronized void printTerrain() {
+        print("================= Terrain ================\n");
         for (int j = getLandscapeHight(0)-1; j >= 0; j--) {
             for (int i = 0; i < getLandscapeWidth(); i++ ) {
 
-                System.out.print(getTerrainTypeView(getTerrainType(i, j)));
+                print(getTerrainTypeView(getTerrainType(i, j)));
             }
-            System.out.println("");
+            print("\n");
         }
-        System.out.println("");
-        System.out.println("");
+        print("\n\n");
     }
 
     private String getTerrainTypeView(TerrainType terrainType) {

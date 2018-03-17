@@ -37,20 +37,16 @@ public class Rain implements Supplier<Integer> {
     }
 
 
-    private Integer featureToInteger(CompletableFuture<Integer> feature) {
-        try {
-            return feature.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return 0;
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
-
     @Override
     public Integer get() {
         return waterSourceVolumes.stream().map(feature -> featureToInteger(feature)).reduce((left, right) -> left + right).get();
+    }
+
+    public Integer featureToInteger(CompletableFuture<Integer> feature) {
+        try {
+            return feature.get();
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }

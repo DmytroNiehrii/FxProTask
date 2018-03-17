@@ -1,5 +1,8 @@
 package com.fxpro.testsolution;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 public class Utils {
     public static int getArrayMaxValue(int[] array) {
         int max = Integer.MIN_VALUE;
@@ -10,6 +13,4 @@ public class Utils {
         }
         return max;
     }
-
-
 }
