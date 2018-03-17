@@ -86,7 +86,6 @@ public class ApplicationTests {
         assertEquals(8, landscape.startRain());
 
         assertTrue(Arrays.deepEquals(EXPECTED_LANDSCAPE_MODEL_AFTER_RAIN, landscape.getTerrain()));
-        landscape.printTerrain();
     }
 
     @Test
@@ -94,10 +93,9 @@ public class ApplicationTests {
         landscape.generateLandscapeModel(model2);
 
         assertTrue(Arrays.deepEquals(expectedLandscapeModelAfterGenerating2, landscape.getTerrain()));
-        assertEquals(8, landscape.startRain());
+        assertEquals(9, landscape.startRain());
 
         assertTrue(Arrays.deepEquals(EXPECTED_LANDSCAPE_MODEL_AFTER_RAIN_2, landscape.getTerrain()));
-        landscape.printTerrain();
     }
 
 }
